@@ -4,7 +4,7 @@
   "description": "Roman<->Arabic number conversion programming examples",
   "main": "index.js",
   "scripts": {
-    "install": "./_scripts/setup.sh",
+    "install": "./_scripts/hello.sh",
     "test": "./_scripts/test.sh"
   },
   "repository": {
