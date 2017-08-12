@@ -5,6 +5,7 @@ dist: trusty
 before_install: |
     set -ev
     set -o pipefail
+    npm install -g npm
 #install: ./_scripts/setup.sh
 script:  ./_scripts/test.sh
 after_failure: |
