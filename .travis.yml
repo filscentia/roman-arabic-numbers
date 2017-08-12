@@ -5,8 +5,8 @@ dist: trusty
 before_install: |
     set -ev
     set -o pipefail
-install: ./_scripts/setup.sh
-script: ./_scripts/test.sh
+#install: ./_scripts/setup.sh
+script:  ./_scripts/test.sh
 after_failure: |
     tail -n +1 -- /home/travis/.npm/_logs/*-debug.log
 sudo: false
