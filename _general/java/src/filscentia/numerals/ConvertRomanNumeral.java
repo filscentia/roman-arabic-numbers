@@ -1,0 +1,171 @@
+package filscentia.numerals;
+
+import java.util.regex.Pattern;
+
+public class ConvertRomanNumeral {
+	
+	// Regexp pattern
+	private Pattern pattern;
+
+	// Numeral enumeration
+	enum NUMERAL {
+		I(1), V(5), X(10), L(50), C(100), D(500), M(1000), E(0);
+
+		int value;
+
+		NUMERAL(int i) {
+			value = i;
+		}
+
+		boolean greaterThanEqual(NUMERAL n) {
+			if (n.value >= value) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public String toString() {
+			return this.name();
+		}
+
+	}
+
+	// Marker for adding or subtracting values
+	enum STATE {
+		ADDIVITIVE, SUBTRACTIVE;
+	}
+
+	public ConvertRomanNumeral(){
+		pattern = Pattern.compile("(^[IVXLCDM]+$)|(^[0-9]+$)");
+	}
+	
+	/**
+	 * Entry point
+	 * @param str  String to process 
+	 * @return  Arabic or Roman numeral or ERROR
+	 */
+	public String process(String str){
+		str = str.trim().toUpperCase();
+		if (pattern.matcher(str).matches()){
+			try {
+				return fromArabicToRoman( Integer.parseInt(str));
+			} catch (NumberFormatException e) {
+				return Integer.toString(fromRomanToArabic(str));
+			}
+		} else {
+			return "ERROR";
+		}
+	}
+	
+	/**
+	 * Convert from Roman to the numeric value
+	 * 
+	 * @param s  String to convert
+	 * @return Integer conversion
+	 */
+	private int fromRomanToArabic(String s) {
+		int v = 0;		
+		STATE state = STATE.ADDIVITIVE;
+
+		// split string into characters and set the first element to E to act as a maker
+		String[] chars = new String[s.length()+1];
+		for (int y = 1; y<=s.length(); y++){
+			chars[y] = Character.toString(s.charAt(y-1));
+		}
+		chars[0] = "E";
+
+		for (int i = s.length(); i > 0; i--) {
+
+			NUMERAL c_this = NUMERAL.valueOf(chars[i]);
+			NUMERAL c_peak = NUMERAL.valueOf(chars[i - 1]);
+
+			switch (state) {
+			case ADDIVITIVE:
+				v += c_this.value;
+				if (!c_this.greaterThanEqual(c_peak)) {
+					state = STATE.SUBTRACTIVE;
+				}
+				break;
+			case SUBTRACTIVE:
+				v -= c_this.value;
+				if (c_this.greaterThanEqual(c_peak)) {
+					state = STATE.ADDIVITIVE;
+				}
+			default:
+				break;
+			}
+
+		}
+
+		return v;
+	}
+
+	/**
+	 * Convert from numeric to roman
+	 * 
+	 * @param i  Numeric to convert
+	 * @return String with Roman conversion
+	 */
+	private String fromArabicToRoman(int i) {
+		
+		if (i<1){
+			return "ERROR";
+		}
+
+		StringBuilder roman = new StringBuilder();
+		int thousands = i / NUMERAL.M.value;
+		i -= thousands * NUMERAL.M.value;
+		int hundreds = i / NUMERAL.C.value;
+		i -= hundreds * NUMERAL.C.value;
+		int tens = i / NUMERAL.X.value;
+		i -= tens * NUMERAL.X.value;
+		int units = i;
+
+		roman.append(addCharacters(NUMERAL.M, thousands));
+		roman.append(getSingleRomanNumeral(hundreds, NUMERAL.M, NUMERAL.D, NUMERAL.C));
+		roman.append(getSingleRomanNumeral(tens, NUMERAL.C, NUMERAL.L, NUMERAL.X));
+		roman.append(getSingleRomanNumeral(units, NUMERAL.X, NUMERAL.V, NUMERAL.I));
+		return roman.toString();
+	}
+
+	/**
+	 * Get a single value - with the high/mid/low values
+	 * 
+	 * @param v
+	 * @param high
+	 * @param mid
+	 * @param low
+	 * @return
+	 */
+	private String getSingleRomanNumeral(int v, NUMERAL high, NUMERAL mid, NUMERAL low) {
+		StringBuilder sb = new StringBuilder();
+
+		if (v == 9) {
+			sb.append(low.name()).append(high.name());
+		} else if (v == 4) {
+			sb.append(low.name()).append(mid.name());
+		} else if (v >= 5) {
+			sb.append(mid.name()).append(addCharacters(low, v - 5));
+		} else {
+			sb.append(addCharacters(low, v));
+		}
+		return sb.toString();
+	}
+
+	/**
+	 * 
+	 * @param m
+	 * @param number
+	 * @return
+	 */
+	private String addCharacters(NUMERAL m, int number) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < number; i++) {
+			sb.append(m.name());
+		}
+
+		return sb.toString();
+	}
+	
+}

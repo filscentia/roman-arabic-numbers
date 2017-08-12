@@ -1,0 +1,12 @@
+{
+  "name": "java",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "java -cp ./src Index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

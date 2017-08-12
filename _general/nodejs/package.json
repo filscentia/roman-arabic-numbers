@@ -1,0 +1,15 @@
+{
+  "name": "roman-numerals",
+  "version": "1.0.0",
+  "description": "Conversion using ES2015, via Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js "
+  },
+  "author": "Matthew B White",
+  "license": "Apache-2",
+  "dependencies": {
+    "chalk": "^2.0.1",
+    "yargs": "^8.0.2"
+  }
+}

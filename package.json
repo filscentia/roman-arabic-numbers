@@ -1,0 +1,21 @@
+{
+  "name": "roman-numerals",
+  "version": "1.0.0",
+  "description": "Roman<->Arabic number conversion programming examples",
+  "main": "index.js",
+  "scripts": {
+    "install": "./_scripts/setup.sh",
+    "test": "./_scripts/test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filscentia/roman-numerals.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filscentia/roman-numerals/issues"
+  },
+  "homepage": "https://github.com/filscentia/roman-numerals#readme"
+}
