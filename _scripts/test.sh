@@ -5,6 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 TEST="${DIR}/../_test"
 GENERAL="${DIR}/../_general"
 
+cd ${GENERAL}
 for LNG in *;
 do
   cd "${GENERAL}/${LNG}"
