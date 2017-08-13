@@ -6,7 +6,7 @@
   "scripts": {
     "build":"./_scripts/script.sh",
     "install": "./_scripts/setup.sh",
-    "test": "./_scripts/test.sh"
+    "test": "./_scripts/script.sh && ./_scripts/test.sh"
   },
   "repository": {
     "type": "git",
