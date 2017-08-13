@@ -4,7 +4,8 @@
   "description": "Conversion using ES2015, via Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js "
+    "test": "node index.js ",
+    "build": "echo 'None required'"
   },
   "author": "Matthew B White",
   "license": "Apache-2",

@@ -3,7 +3,7 @@ import java.io.FileReader;
 
 import filscentia.numerals.ConvertRomanNumeral;
 
-public class Index {
+public class App {
 
     // need to read stdin and get the files to convert
     // need interactive mode

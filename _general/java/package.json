@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "java -cp ./src Index"
+    "build":"gradle build",
+    "test": "java -cp ./build/lib/java.jar App",
+    "test:local": "java -cp ./build/libs/java.jar App --file ../../_test/input-short.csv"
   },
   "keywords": [],
   "author": "",

@@ -10,9 +10,5 @@ for LNG in nodejs java;
 do
   cd ${GENERAL}/${LNG}
   pwd
-  npm install
+  npm run build
 done
-
-
-
-
