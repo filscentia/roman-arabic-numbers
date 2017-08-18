@@ -1,15 +1,22 @@
 {
-  "name": "roman-numerals",
+  "name": "Javascript",
   "version": "1.0.0",
   "description": "Conversion using ES2015, via Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js "
+    "test": "node index.js ",
+    "build": "echo 'None required'",
+    "interactive": "node index.js --interactive"
   },
+  "keywords": ["nodejs","javascript"],
   "author": "Matthew B White",
-  "license": "Apache-2",
+  "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^2.0.1",
     "yargs": "^8.0.2"
+  },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filscentia/roman-numerals.git"
   }
 }

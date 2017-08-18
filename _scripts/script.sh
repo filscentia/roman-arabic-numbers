@@ -2,8 +2,9 @@
 set -ev
 set -o pipefail
 
+
 # --------------------------------------------------------------------------------------------
-# Issuing npm install per the listed languages.
+# Issuing the run build per all the languages
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 GENERAL="${DIR}/../_general"
  
@@ -12,6 +13,7 @@ for LNG in c nodejs java;
 do
   cd ${GENERAL}/${LNG}
   pwd
-  npm install
+  npm run build
 done
+
 # --------------------------------------------------------------------------------------------

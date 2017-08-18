@@ -5,12 +5,6 @@ const ConvertRomanNumeral = require("./lib/ConvertRomanNumeral");
 
 let converter = new ConvertRomanNumeral();
 
-// for (let i=1; i<=3000; i++){
-//   let roman = converter.fromArabicToRoman(i);
-//   // console.log(i+','+roman);
-//   console.log(roman+','+i);
-// }
-
 var argv = require("yargs")
   .usage("Usage: $0  [options]")
   // .example('$0 count -f foo.js', 'count the lines in the given file')

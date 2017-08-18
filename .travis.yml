@@ -5,8 +5,11 @@ dist: trusty
 before_install: |
     set -ev
     set -o pipefail
-install: ./_scripts/setup.sh
-script: ./_scripts/test.sh
+    npm install -g npm
+    ls -l ./_scripts
+    chmod +x ./_scripts/*.sh
+    ls -l ./_scripts
+script:  npm run test
 after_failure: |
     tail -n +1 -- /home/travis/.npm/_logs/*-debug.log
 sudo: false
