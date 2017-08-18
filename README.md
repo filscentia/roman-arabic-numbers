@@ -8,14 +8,29 @@ This project contains programs in different languages to solve the problem of co
 
 There is a standard set of test data that can be used to validate any example, and ideally all versions should have an interactive mode to run from the command line. 
 
-## Rules
+## Getting Started
+
+You should clone this repo, and then issue the `npm install` from the command line.  npm is being used as the general task runner here. One cloned and installed, you can then run all the tests (including building the code) by issuing `npm run test`
+
+This will build all the programs and run them with the test data.
+
+If you run `npm start` then you can see the languages that currently have coded up implementations. And how to run them in the interactive mode. 
+
+### Structure
+ - The `_general` folder  contains implementations in general purpose languages, eg JavaScript, C, Java
+ - The `_scripts` folder contains scripts for running the whole tests etc. 
+ - The `_test` foler has all the test data, including the answers!
+
+Within `_general` there is a directory for each language. Within this there is `package.json` file. This is only present to documented information about the language - and the commands required for setup, build, and test. Each language can use it's own typical build system. eg Java has Gradle, C has make.
+
+## Design guidelines
 
 The following are the principles behind the design of the applications
 
 - Standard Language features only (at level of language as defined)
 - Custom libraries 3rd party libraries kept to a minimum
-- All code to be ideomatic of the language, but well engineered. i.e. use the language features efficiently - but still well engineered
-- For testing, applications should take a simple input file and produce output to a set format
+- All code to be ideomatic of the language, but well engineered. i.e. use the language features efficiently - but still well engineered. 
+- For testing, applications should take a simple input file and produce output to a set format (see below)
 - Command line interactive mode recommened
 - One implementation per directory, with an *npm* format `package.json` to define the test, setup and other meta data. Actual build system can be per language - put their invocations into the `package.json` file
 - Conversion algorthms do not have to be the ones used for other languages.
@@ -36,21 +51,24 @@ Current implementations are in the `_general` folder for general purpose languag
 
 - Javascript using NodeJS 
 - Java
-
-Currently planned
-
 - C
+
+Currently planned *gneral purpose languages*
+
 - Python
 - Ruby
 - Go
 - php
 
+For *specific languages* currently planning that awk would be the first one.
 
 ## Contributing Information
 
 ### Pull requests
 More then welcome, please create an issue saying what you want to do - or take ownership of an existing one. 
 PRs will be accepted if they can pass all the tests. 
+
+When a PR is made, this will trigger a Travis-CI build, if this completes ok, then the PR can be submitted for merege (after a review)
 
 ### Test format
 Data is supplied in a simple file, one input per line. `--file` option is passed that gives the location of this. Format of the file is 
