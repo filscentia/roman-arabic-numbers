@@ -1,14 +1,15 @@
 {
-  "name": "java",
+  "name": "Java",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Java8",
+  "main": "indexjs",
   "scripts": {
     "build":"gradle build",
     "test": "java -cp ./build/libs/java.jar App",
-    "test:local": "java -cp ./build/libs/java.jar App --file ../../_test/input-short.csv"
+    "test:local": "java -cp ./build/libs/java.jar App --file ../../_test/input-short.csv",
+    "interactive": "java -cp ./build/libs/java.jar App --interactive"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["Java"],
+  "author": "Matthew B White",
+  "license": "Apache-2.0"
 }

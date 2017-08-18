@@ -2,17 +2,16 @@
 set -ev
 set -o pipefail
 
+# --------------------------------------------------------------------------------------------
+# Issuing npm install per the listed languages.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 GENERAL="${DIR}/../_general"
  
 cd ${GENERAL}
-for LNG in nodejs java;
+for LNG in c nodejs java;
 do
   cd ${GENERAL}/${LNG}
   pwd
   npm install
 done
-
-
-
-
+# --------------------------------------------------------------------------------------------

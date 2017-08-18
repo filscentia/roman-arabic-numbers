@@ -4,19 +4,24 @@
   "description": "Roman<->Arabic number conversion programming examples",
   "main": "index.js",
   "scripts": {
-    "build":"./_scripts/script.sh",
+    "start": "node info.js",
+    "build": "./_scripts/script.sh",
     "install": "./_scripts/setup.sh",
-    "test": "./_scripts/script.sh && ./_scripts/test.sh"
+    "test": "npm run build && ./_scripts/test.sh"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/filscentia/roman-numerals.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Matthew B White",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/filscentia/roman-numerals/issues"
   },
-  "homepage": "https://github.com/filscentia/roman-numerals#readme"
+  "homepage": "https://github.com/filscentia/roman-numerals#readme",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "prettyjson": "^1.2.1"
+  }
 }
