@@ -8,10 +8,10 @@ var pretty = require('prettyjson');
 
 console.log(chalk.blue.bold('Roman-Arabic numeral programs available:\n'));
 
-let apps = fs.readdirSync('./_general');
+let apps = fs.readdirSync('./code');
 apps.forEach(function(entry) {
     
-	var possiblePackage = path.resolve('./_general',entry,'package.json');
+	var possiblePackage = path.resolve('./code',entry,'package.json');
 	
 	if (fs.existsSync(possiblePackage)){
 	    var packagejson = require(possiblePackage);

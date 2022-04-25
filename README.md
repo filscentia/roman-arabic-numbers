@@ -17,11 +17,11 @@ This will build all the programs and run them with the test data.
 If you run `npm start` then you can see the languages that currently have coded up implementations. And how to run them in the interactive mode. 
 
 ### Structure
- - The `_general` folder  contains implementations in general purpose languages, eg JavaScript, C, Java
+ - The `code` folder  contains implementations in general purpose languages, eg JavaScript, C, Java
  - The `_scripts` folder contains scripts for running the whole tests etc. 
  - The `_test` foler has all the test data, including the answers!
 
-Within `_general` there is a directory for each language. Within this there is `package.json` file. This is only present to documented information about the language - and the commands required for setup, build, and test. Each language can use it's own typical build system. eg Java has Gradle, C has make.
+Within `code` there is a directory for each language. Within this there is `package.json` file. This is only present to documented information about the language - and the commands required for setup, build, and test. Each language can use it's own typical build system. eg Java has Gradle, C has make.
 
 ## Design guidelines
 
@@ -47,7 +47,7 @@ For this set of test data, the conversion from Roman to Arabic is expected to ha
 
 ## Additional Languages
 
-Current implementations are in the `_general` folder for general purpose languages.
+Current implementations are in the `code` folder for general purpose languages.
 
 - Javascript using NodeJS 
 - Java

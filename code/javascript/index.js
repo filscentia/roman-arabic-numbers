@@ -50,7 +50,8 @@ if (argv.i) {
 
   // when a line has been entered by the user
   rl.on("line", function(line) {
-    console.log(line + "," + converter.process(line));
+    const converted = converter.process(line)
+    console.log(`${line},${converted},${line.length},${converted.length},${line.length/converted.length}` );
   });
 
   rl.on("close", function() {

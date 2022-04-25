@@ -6,7 +6,7 @@ set -o pipefail
 # --------------------------------------------------------------------------------------------
 # Issuing the run build per all the languages
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
-GENERAL="${DIR}/../_general"
+GENERAL="${DIR}/../code"
  
 cd ${GENERAL}
 for LNG in c nodejs java;

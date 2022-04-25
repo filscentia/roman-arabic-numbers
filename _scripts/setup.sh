@@ -5,7 +5,7 @@ set -o pipefail
 # --------------------------------------------------------------------------------------------
 # Issuing npm install per the listed languages.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
-GENERAL="${DIR}/../_general"
+GENERAL="${DIR}/../code"
  
 cd ${GENERAL}
 for LNG in c nodejs java;
