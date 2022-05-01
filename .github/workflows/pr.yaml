@@ -1,0 +1,22 @@
+name: RomanArabic-PR-workflow
+
+on:
+  push:
+    branches:  [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: extractions/setup-just@v1
+      - run: just build-all
+      - run: just test-all
