@@ -8,14 +8,17 @@
     "build": "echo 'None required'",
     "interactive": "node index.js --interactive"
   },
-  "keywords": ["nodejs","javascript"],
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
   "author": "Matthew B White",
   "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^2.0.1",
-    "yargs": "^8.0.2"
+    "yargs": "^17.4.1"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/filscentia/roman-numerals.git"
   }

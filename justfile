@@ -103,3 +103,16 @@ build lang:
         echo "!! {{lang}} does not have a build.sh" 
     fi
     popd > /dev/null
+
+# run interactively
+repl lang:
+    #!/bin/bash
+    set -eu -o pipefail
+
+    pushd ${DIR}/code/{{lang}} > /dev/null 
+    if [ -f 'repl.sh' ]; then
+        ./repl.sh
+    else 
+        echo "!! {{lang}} does not have a repl.sh" 
+    fi
+    popd > /dev/null    
