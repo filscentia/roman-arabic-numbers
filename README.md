@@ -1,4 +1,11 @@
-# Roman and Arabic Numerals - An exercise in programming
+# Roman and Arabic Numerals
+
+- **Learn Number Systems and Programming**
+- **Lots of different langauges all converting Roman to/from Arabic numbers**
+
+[![asciicast](https://asciinema.org/a/491480.svg)](https://asciinema.org/a/491480)
+
+
 
 To learn a new programming language, the best way I find is to jump in and try and write a useful program. After reading the basics, and trying 'Hello World'.  Actually trying to solve a problem is a great way of learning.
 
