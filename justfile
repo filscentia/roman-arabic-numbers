@@ -11,8 +11,8 @@ DIR := justfile_directory()
 TEST := join(justfile_directory(),"_test")
 
 # record some of the colour formatting
-bold :=`tput bold`
-normal:=`tput sgr0`
+bold :='\033[1m'
+normal:='\033[0m'
 red:='\033[0;31m'
 blue:='\033[0;34m'
 
