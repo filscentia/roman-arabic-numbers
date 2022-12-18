@@ -6,7 +6,6 @@
 [![asciicast](https://asciinema.org/a/491480.svg)](https://asciinema.org/a/491480)
 
 
-
 To learn a new programming language, the best way I find is to jump in and try and write a useful program. After reading the basics, and trying 'Hello World'.  Actually trying to solve a problem is a great way of learning.
 
 This project contains programs in different languages to solve the problem of converting Roman to/from Arabic numbers. Simple problem, but can be taxing to get the algorthm correct. 
@@ -66,9 +65,9 @@ just test java medium
  - The `code` folder  contains implementations in general purpose languages, eg JavaScript, C, Java
  - The `_test` foler has all the test data, including the answers!
 
-Within `code` there is a directory for each language. Within this there are the program code itself, and also two shell scripts. `run.sh` and `buid.sh`/
+Within `code` there is a directory for each language. Within this there are the program code itself, and also two shell scripts. `run.sh` and `buid.sh`
 
-These two scripts are common to all languages, to make it easier to run everything. Each language can use whatever make/run system is applicable. 
+These two scripts are common to all languages, to make it easier to run everything. Each language can use whatever make/run system is applicable. Note that it might be worth running the programs within a language specific docker image.
 
 ## Roman Number syntax
 
@@ -85,9 +84,10 @@ For this set of test data, the conversion from Roman to Arabic is expected to ha
 
 The following are the principles behind the design of the applications
 
-- Standard Language features only (at level of language as defined)
+- Standard Language features only
+  - create a new language-folder if a different style is being used eg functional
 - Custom libraries 3rd party libraries kept to a minimum
-- All code to be ideomatic of the language, but well engineered. i.e. use the language features efficiently - but still well engineered. 
+- All code to be typical-ish of the language, but well engineered. i.e. use the language features efficiently - but still well engineered. 
 - For testing, applications should take a simple input file and produce output to a set format (see below)
 - Command line interactive mode recommened
 - One implementation per directory, `build.sh` and `run.sh` to define the build and test. Actual build system can be per language.
@@ -147,8 +147,11 @@ As an example, these are the accpeted command line arguments for javscript
 
 - make sure that it can convert of course ;-)
 - add any temporary or binary files to the `.gitignore` (put this in the actual program directory)
-- ensure that the build.sh first checks any prereqs that are needed
+- executable shell scripts `_run.sh` `_build.sh` `_repl.sh` 
+- `_build.sh` compiles or does any setup needed. It should first check any prereqs that are needed and advises of how to install them; alternatively you may wish to use a docker image to both build and run the code. Apart from docker, please do NOT install software. If you wish to provide and `_install.sh` script then please do - but NOT call this
+- `_run.sh` is given a argument that is the full path of the test file to load. Output data must be sent to stdout. 
+- `_repl.sh` is the interactive mode letting humans test
+- README.md should be present and will be output on  
 - add to the github actions the required setup steps
-    - if this is tricky, please create the PR and then tag me to assist
+  - if this is tricky, please create the PR and then tag me to assist
 - one PR per language please
-- ideally applications should accept a `--file` argument to give the name of the input data. Output data is sent to stdout.  (though as the `run.sh` script is within the control of each langauge, this is not 100% mandated)

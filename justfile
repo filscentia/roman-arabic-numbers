@@ -63,6 +63,19 @@ info lang:
        echo "!! {{lang}} does not have a README.md" 
     fi
 
+# Checks and then installs the language if needed
+install lang:
+    #!/bin/bash
+    set -eu -o pipefail
+    README=${DIR}/code/{{lang}}/_install.sh
+    if [ -f ${README} ]; then
+        echo -e "\n{{bold}}>> {{lang}}{{normal}}"
+        ./_install.sh
+        echo -e "{{bold}}<< {{lang}}{{normal}}\n"
+    else
+       echo "!! {{lang}} does not have a _install.sh" 
+    fi
+
 # Run tests for the specified language
 # just test <language> [setoftests]
 test lang set="full":
@@ -70,20 +83,19 @@ test lang set="full":
     set -eu -o pipefail
     echo "   Running tests {{set}}"
     pushd ${DIR}/code/{{lang}} > /dev/null 
-    if [ -f 'run.sh' ]; then
+    if [ -f '_run.sh' ]; then
         echo -e "\n{{bold}}>> {{lang}}{{normal}}"
-        /usr/bin/time -f "   {{lang}} - Run complete in %e seconds" ./run.sh "${TEST}/input-{{set}}.csv" > {{lang}}_test.log
+        /usr/bin/time -f "   {{lang}} - Run complete in %e seconds" ./_run.sh "${TEST}/input-{{set}}.csv"  > {{lang}}_test.log
         cat {{lang}}_test.log | awk '/--START--/{flag=1;next}/--END--/{flag=0;}flag' | diff --side-by-side  --suppress-common-lines - "${TEST}/results-{{set}}.csv"
-    
+
         if [ $? == 0 ]; then
             echo "   {{lang}} - Correct results"
-            # cat ${LANG}.log
         else 
-            echo "   {{lang}} - Fail; some errors"
+            echo "   {{lang}} - Fail; some errors see ({lang}}_test.log)"
         fi
         echo -e "{{bold}}<< {{lang}}{{normal}}\n"
     else 
-        echo "!! {{lang}} does not have a run.sh" 
+        echo "!! {{lang}} does not have a _run.sh" 
     fi
     popd > /dev/null 
 
@@ -94,13 +106,13 @@ build lang:
     set -eu -o pipefail
 
     pushd ${DIR}/code/{{lang}} > /dev/null 
-    if [ -f 'build.sh' ]; then
+    if [ -f '_build.sh' ]; then
         echo -e "\n{{bold}}>> {{lang}}{{normal}}"
-        ./build.sh
+        ./_build.sh
         echo -e "{{bold}}<< {{lang}}{{normal}}\n"
     else 
 
-        echo "!! {{lang}} does not have a build.sh" 
+        echo "!! {{lang}} does not have a _build.sh" 
     fi
     popd > /dev/null
 
@@ -110,9 +122,12 @@ repl lang:
     set -eu -o pipefail
 
     pushd ${DIR}/code/{{lang}} > /dev/null 
-    if [ -f 'repl.sh' ]; then
-        ./repl.sh
+    if [ -f '_repl.sh' ]; then
+        ./_repl.sh
     else 
-        echo "!! {{lang}} does not have a repl.sh" 
+        echo "!! {{lang}} does not have a _repl.sh" 
     fi
     popd > /dev/null    
+
+
+
