@@ -10,7 +10,7 @@ assignees: ''
 Language Name:
 Link to homepage:
 
-[ ] _run.sh
-[ ] _build.sh
-[ ] _install.sh
-[ ] README.md
+- [ ] _run.sh
+- [ ] _build.sh
+- [ ] _install.sh
+- [ ] README.md
