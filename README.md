@@ -25,27 +25,28 @@ Then clone this repo, and run `just` to get the welcome text
 ```shell
 git clone https://github.com/filscentia/roman-numerals.git
 ./just
-
 Roman-Arabic Numeral Conversions
 
 Available Languages:
   c
-  java
   javascript
-  python
+  _template
+  java
 
 Available recipes:
     build lang           # just test <language>
     build-all            # Build all the programs
     info lang            # Information about the implementation for 'lang'
     info-all             # Show information (the README.md) of all the programs
+    install lang         # Checks and then installs the language if needed
     list                 # List all languages currently available
+    repl lang            # run interactively
     test lang set="full" # just test <language> [setoftests]
     test-all set="full"  # Run all the tests, optional set of tests [full, medium, small]
 
 ```
 
-> This repo contains code written in a lot of languages, so you might not have everything that is needed; if any language script fails, the rest carry on. 
+This repo contains code written in a lot of languages, so you might not have everything that is needed; if any language script fails, the rest carry on. 
 
 To build and test all the languages
 
@@ -61,13 +62,25 @@ just build java
 just test java medium
 ```
 
+For information on one of the langauges 
+```
+just info c
+```
+
+To install a local toolchain for the language
+```
+just install python
+```
+
+
 ### Structure
- - The `code` folder  contains implementations in general purpose languages, eg JavaScript, C, Java
+ - The `code` folder  contains implementations 
+   - `_run.sh` `_build.sh` are required scripts
+   - `_reply.sh `_install.sh` are recommended
+   - `README.md` is stronly recommended as well.
  - The `_test` foler has all the test data, including the answers!
 
-Within `code` there is a directory for each language. Within this there are the program code itself, and also two shell scripts. `run.sh` and `buid.sh`
-
-These two scripts are common to all languages, to make it easier to run everything. Each language can use whatever make/run system is applicable. Note that it might be worth running the programs within a language specific docker image.
+These scripts are common to all languages, to make it easier to run everything. Each language can use whatever make/run system is applicable. Note that it might be worth running the programs within a language specific docker image. The `_run.sh` script takes an argument which is the absolute path of the test file.
 
 ## Roman Number syntax
 
@@ -78,20 +91,6 @@ But what about 4? Typically it is represented as *IV*, but also (look at clocks)
 Is 45, *XXXXV*, or is it *XLV* or *VL*?  
 
 For this set of test data, the conversion from Roman to Arabic is expected to handle all the above cases. Converting to Roman pick in this case the *XLV* format - the number that is the subtractor, in this case the X, should be of the same order of magnitude.  
-
-
-## Program Design guidelines
-
-The following are the principles behind the design of the applications
-
-- Standard Language features only
-  - create a new language-folder if a different style is being used eg functional
-- Custom libraries 3rd party libraries kept to a minimum
-- All code to be typical-ish of the language, but well engineered. i.e. use the language features efficiently - but still well engineered. 
-- For testing, applications should take a simple input file and produce output to a set format (see below)
-- Command line interactive mode recommened
-- One implementation per directory, `build.sh` and `run.sh` to define the build and test. Actual build system can be per language.
-- Conversion algorthms do not have to be the ones used for other languages. Alternatives are suggested. Each run is timed!
 
 
 ## Contributing Information
@@ -137,11 +136,7 @@ MCMXXXIII,1933
 
 Note the two error cases marked by `ERROR`
 
-As an example, these are the accpeted command line arguments for javscript
-```
-  -i, --interactive  Run in interactive mode
-  -f, --file         File to load the input from
-```
+
 
 ## Checklist for new languages
 
@@ -155,3 +150,8 @@ As an example, these are the accpeted command line arguments for javscript
 - add to the github actions the required setup steps
   - if this is tricky, please create the PR and then tag me to assist
 - one PR per language please
+ Standard Language features only
+  - create a new language-folder if a different style is being used eg functional
+- Custom libraries 3rd party libraries kept to a minimum
+- Conversion algorthms do not have to be the ones used for other languages. Alternatives are suggested. Each run is timed!
+- How the code is run eg CLI with arguments, ini file is entirely upto the implementation.
