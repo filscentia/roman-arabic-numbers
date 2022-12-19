@@ -155,3 +155,7 @@ Note the two error cases marked by `ERROR`
 - Custom libraries 3rd party libraries kept to a minimum
 - Conversion algorthms do not have to be the ones used for other languages. Alternatives are suggested. Each run is timed!
 - How the code is run eg CLI with arguments, ini file is entirely upto the implementation.
+
+## License
+
+APACHE-2.0
